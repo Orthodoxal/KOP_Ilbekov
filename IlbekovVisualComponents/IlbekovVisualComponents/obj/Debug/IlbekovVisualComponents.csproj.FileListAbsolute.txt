@@ -1,0 +1,6 @@
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP\IlbekovVisualComponents\IlbekovVisualComponents\obj\Debug\IlbekovVisualComponents.csproj.AssemblyReference.cache
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP\IlbekovVisualComponents\IlbekovVisualComponents\obj\Debug\IlbekovVisualComponents.csproj.CoreCompileInputs.cache
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP\IlbekovVisualComponents\IlbekovVisualComponents\bin\Debug\IlbekovVisualComponents.dll
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP\IlbekovVisualComponents\IlbekovVisualComponents\bin\Debug\IlbekovVisualComponents.pdb
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP\IlbekovVisualComponents\IlbekovVisualComponents\obj\Debug\IlbekovVisualComponents.dll
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP\IlbekovVisualComponents\IlbekovVisualComponents\obj\Debug\IlbekovVisualComponents.pdb
