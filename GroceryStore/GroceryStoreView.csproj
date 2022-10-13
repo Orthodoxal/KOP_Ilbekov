@@ -276,6 +276,12 @@
     <Compile Include="FormProduct.Designer.cs">
       <DependentUpon>FormProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUnits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUnits.Designer.cs">
+      <DependentUpon>FormUnits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Plugins\MainPluginConvention.cs" />
     <Compile Include="Plugins\ProductConventionElement.cs" />
     <Compile Include="Program.cs" />
