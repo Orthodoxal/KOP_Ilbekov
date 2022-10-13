@@ -1,0 +1,6 @@
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreContracts\bin\Debug\GroceryStoreContracts.dll
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreContracts\bin\Debug\GroceryStoreContracts.pdb
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreContracts\obj\Debug\GroceryStoreContracts.csproj.AssemblyReference.cache
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreContracts\obj\Debug\GroceryStoreContracts.csproj.CoreCompileInputs.cache
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreContracts\obj\Debug\GroceryStoreContracts.dll
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreContracts\obj\Debug\GroceryStoreContracts.pdb

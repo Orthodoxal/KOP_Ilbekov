@@ -1,0 +1,9 @@
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\bin\Debug\GroceryStoreBusinessLogic.dll
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\bin\Debug\GroceryStoreBusinessLogic.pdb
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\obj\Debug\GroceryStoreBusinessLogic.csproj.AssemblyReference.cache
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\obj\Debug\GroceryStoreBusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\obj\Debug\GroceryStoreBusinessLogic.dll
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\obj\Debug\GroceryStoreBusinessLogic.pdb
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\bin\Debug\GroceryStoreContracts.dll
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\bin\Debug\GroceryStoreContracts.pdb
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStoreBusinessLogic\obj\Debug\GroceryStoreBusinessLogic.csproj.CopyComplete
