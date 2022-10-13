@@ -4,14 +4,16 @@ using GroceryStoreDatabase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GroceryStoreDatabase.Migrations
 {
     [DbContext(typeof(GroceryStoreDatabase))]
-    partial class GroceryStoreDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20221013105827_Init2")]
+    partial class Init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

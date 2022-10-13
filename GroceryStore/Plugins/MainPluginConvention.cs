@@ -9,6 +9,7 @@ using LipatovVisualComponents;
 using GroceryStoreContracts.ViewModels;
 using GroceryStoreContracts.BusinessLogicContracts;
 using GroceryStoreBusinessLogic;
+using Unity;
 
 namespace GroceryStore.Plugins
 {
@@ -26,7 +27,7 @@ namespace GroceryStore.Plugins
 
         public UserControl GetControl => treeView;
 
-        public PluginsConventionElement GetElement => treeView.GetSelectedNode<PluginsConventionElement>();
+        public PluginsConventionElement GetElement => treeView.GetSelectedNode<ProductConventionElement>();
 
         public bool CreateChartDocument(PluginsConventionSaveDocument saveDocument)
         {
@@ -48,6 +49,7 @@ namespace GroceryStore.Plugins
             try
             {
                 _productLogic.Delete(new ProductViewModel() { Id = element.Id });
+                ReloadData();
             }
             catch (Exception ex)
             {
@@ -59,7 +61,7 @@ namespace GroceryStore.Plugins
 
         public Form GetForm(PluginsConventionElement element)
         {
-            throw new NotImplementedException();
+            return Program.Container.Resolve<FormProduct>();
         }
 
         public void ReloadData()

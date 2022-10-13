@@ -11,6 +11,6 @@ namespace GroceryStore.Plugins
     {
         public string Name { get; set; }
         public string Category { get; set; }
-        public int Count { get; set; }
+        public double? Count { get; set; }
     }
 }

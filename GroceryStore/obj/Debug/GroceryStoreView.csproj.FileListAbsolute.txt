@@ -132,3 +132,5 @@ C:\Users\Дмитрий\Desktop\University education\Университет Ла
 C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStore\bin\Debug\GroceryStoreContracts.pdb
 C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStore\bin\Debug\Unity.Abstractions.pdb
 C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStore\bin\Debug\Unity.Container.pdb
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStore\obj\Debug\GroceryStore.FormMain.resources
+C:\Users\Дмитрий\Desktop\University education\Университет Лабы\3 КУРС\COP app\GroceryStore\GroceryStore\obj\Debug\GroceryStore.FormProduct.resources

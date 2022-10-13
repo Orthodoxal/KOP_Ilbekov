@@ -255,6 +255,10 @@
     <Compile Include="Migrations\20221006161946_InitialCreate.designer.cs">
       <DependentUpon>20221006161946_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20221013105827_Init2.cs" />
+    <Compile Include="Migrations\20221013105827_Init2.designer.cs">
+      <DependentUpon>20221013105827_Init2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GroceryStoreDatabaseModelSnapshot.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />

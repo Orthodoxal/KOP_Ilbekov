@@ -20,6 +20,6 @@ namespace GroceryStoreContracts.ViewModels
         [DisplayName("Категория")]
         public string Category { get; set; }
         [DisplayName("Количество")]
-        public int Count { get; set; }
+        public double? Count { get; set; }
     }
 }

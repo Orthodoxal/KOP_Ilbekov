@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace GroceryStore
 {
@@ -53,8 +54,8 @@ namespace GroceryStore
 
         private void MenuItemCategories_Click(object sender, EventArgs e)
         {
-            //FormUnits formUnits = new FormUnits();
-            //formUnits.ShowDialog();
+            //var form = Program.Container.Resolve<FormProduct>();
+            //form.ShowDialog();
         }
 
         private void MenuItemProducts_Click(object sender, EventArgs e)
