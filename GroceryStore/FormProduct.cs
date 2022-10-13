@@ -64,17 +64,24 @@ namespace GroceryStore
         {
             if (textBoxName.Text != "" && textBoxDescription.Text != "" && ilbekovComboBoxCategory.ChoosenItem != "")
             {
-                _productLogic.CreateOrUpdate(new ProductViewModel
+                try
                 {
-                    Id = id,
-                    Name = textBoxName.Text,
-                    Description = textBoxDescription.Text,
-                    Category = ilbekovComboBoxCategory.ChoosenItem,
-                    Count = madyshevTextBoxCount.TextBoxValue
-                });
-                flagChanges = false;
-                DialogResult = DialogResult.OK;
-                Close();
+                    _productLogic.CreateOrUpdate(new ProductViewModel
+                    {
+                        Id = id,
+                        Name = textBoxName.Text,
+                        Description = textBoxDescription.Text,
+                        Category = ilbekovComboBoxCategory.ChoosenItem,
+                        Count = madyshevTextBoxCount.TextBoxValue
+                    });
+                    flagChanges = false;
+                    DialogResult = DialogResult.OK;
+                    Close();
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else
             {

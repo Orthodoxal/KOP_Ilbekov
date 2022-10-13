@@ -19,10 +19,13 @@ namespace GroceryStore
         private readonly Dictionary<string, IPluginsConvention> _plugins;
         private string _selectedPlugin;
         private IProductLogic _productLogic;
-        public FormMain(IProductLogic productLogiс)
+        private ICategoryLogic _categoryLogic;
+
+        public FormMain(IProductLogic productLogiс, ICategoryLogic categoryLogic)
         {
             InitializeComponent();
             _productLogic = productLogiс;
+            _categoryLogic = categoryLogic;
             _plugins = LoadPlugins();
         }
         private Dictionary<string, IPluginsConvention> LoadPlugins()
@@ -34,7 +37,7 @@ namespace GroceryStore
             // Пример: panelControl.Controls.Clear(); panelControl.Controls.Add(ctrl);
 
             var dic = new Dictionary<string, IPluginsConvention>();
-            var mainPlugin = new MainPluginConvention(_productLogic);
+            var mainPlugin = new MainPluginConvention(_productLogic, _categoryLogic);
             dic.Add(mainPlugin.PluginName, mainPlugin);
 
             System.Windows.Forms.ToolStripItem[] toolStripItems = new System.Windows.Forms.ToolStripItem[2];
@@ -143,7 +146,7 @@ namespace GroceryStore
         }
         private void CreateSimpleDoc()
         {
-            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            using (var dialog = new SaveFileDialog { Filter = "xls|*.xls" })
             {
                 if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateSimpleDocument(
                     new PluginsConventionSaveDocument()
@@ -163,27 +166,27 @@ namespace GroceryStore
         }
         private void CreateTableDoc()
         {
-            using (var dialog = new SaveFileDialog { Filter = "pdf|*.pdf" })
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
             {
-                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateTableDocument(new
-                    PluginsConventionSaveDocument()
-                {
-                    FileName = dialog.FileName
-                }))
+                if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateTableDocument(
+                    new PluginsConventionSaveDocument()
+                    {
+                        FileName = dialog.FileName
+                    }))
                 {
                     MessageBox.Show("Документ сохранен", "Создание документа",
-        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     MessageBox.Show("Ошибка при создании документа", "Ошибка",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
         private void CreateChartDoc()
         {
-            using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xls" })
+            using (var dialog = new SaveFileDialog { Filter = "pdf|*.pdf" })
             {
                 if (dialog.ShowDialog() == DialogResult.OK && _plugins[_selectedPlugin].CreateChartDocument(new
                     PluginsConventionSaveDocument()
@@ -192,12 +195,12 @@ namespace GroceryStore
                 }))
                 {
                     MessageBox.Show("Документ сохранен", "Создание документа",
-        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     MessageBox.Show("Ошибка при создании документа", "Ошибка",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

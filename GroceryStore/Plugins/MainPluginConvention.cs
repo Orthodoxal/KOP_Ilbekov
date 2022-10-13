@@ -10,6 +10,12 @@ using GroceryStoreContracts.ViewModels;
 using GroceryStoreContracts.BusinessLogicContracts;
 using GroceryStoreBusinessLogic;
 using Unity;
+using IlbekovNonVisualComponents;
+using MadyshevUnvisualComponents;
+using MadyshevUnvisualComponents.Models;
+using LipatovNonVisualComponents;
+using LipatovNonVisualComponents.HelperModels;
+using LipatovNonVisualComponents.Enums;
 
 namespace GroceryStore.Plugins
 {
@@ -17,10 +23,13 @@ namespace GroceryStore.Plugins
     {
         private LipatovTreeView treeView = new LipatovTreeView();
         private IProductLogic _productLogic;
+        private ICategoryLogic _categoryLogic;
 
-        public MainPluginConvention(IProductLogic productLogiс)
+        public MainPluginConvention(IProductLogic productLogiс, ICategoryLogic categoryLogic)
         {
             _productLogic = productLogiс;
+            _categoryLogic = categoryLogic;
+            treeView.SetHierarchy(new List<string> { "Category", "Count", "Id", "Name" });
             ReloadData();
         }
         public string PluginName => "Продукты";
@@ -31,17 +40,90 @@ namespace GroceryStore.Plugins
 
         public bool CreateChartDocument(PluginsConventionSaveDocument saveDocument)
         {
-            throw new NotImplementedException();
+            try
+            {
+                LipatovChartPdf chartPdf = new LipatovChartPdf();
+                var data = new List<LipatovNonVisualComponents.HelperModels.ChartData>();
+                foreach (var category in _categoryLogic.Read(null))
+                {
+                    int count = _productLogic.Read(null)
+                        .Where(product => product.Category == category.Name && product.Count == null)
+                        .Count();
+                    if (count > 0)
+                    {
+                        data.Add(new LipatovNonVisualComponents.HelperModels.ChartData() { Series = count, XSeries = category.Name });
+                    }
+                }
+                chartPdf.CreateDocument(new ChartParameters()
+                {
+                    Path = saveDocument.FileName,
+                    Title = "Продукты",
+                    ChartName = "Отсутствующие продукты",
+                    ChartLegendLocation = ChartLegendLocation.Right,
+                    Data = data
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            return true;
+            
         }
 
         public bool CreateSimpleDocument(PluginsConventionSaveDocument saveDocument)
         {
-            throw new NotImplementedException();
+            try
+            {
+                IlbekovContextExcel contextExcel = new IlbekovContextExcel();
+                var strings = new List<string>();
+                _productLogic.Read(null).ForEach(product => 
+                {
+                    if (product.Count != null)
+                        strings.Add($"{product.Name} - {product.Description}");
+                });
+                contextExcel.CreateFile(saveDocument.FileName, "Продукты", strings);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            return true;
         }
 
         public bool CreateTableDocument(PluginsConventionSaveDocument saveDocument)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MadyshevCustomTableComponent tableWord = new MadyshevCustomTableComponent();
+                tableWord.CreateDoc(new CustomTableData<ProductViewModel>()
+                {
+                    FileName = saveDocument.FileName,
+                    Title = "Продукты",
+                    HeaderHeight = 1200,
+                    RowsHeight = 800,
+                    ColumnsHeaders = new List<string>()
+                                {
+                                "Идентификатор", "Название", "Описание", "Категория", "Количество"
+                                },
+                    ColumnsWidth = new List<int>()
+                                {
+                                1000, 1000, 1000, 800
+                                },
+                    ColumnsProperties = new List<string>()
+                                {
+                                "Id", "Name", "Description", "Category", "Count"
+                                },
+                    Data = _productLogic.Read(null)
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            return true;
         }
 
         public bool DeleteElement(PluginsConventionElement element)
@@ -61,14 +143,16 @@ namespace GroceryStore.Plugins
 
         public Form GetForm(PluginsConventionElement element)
         {
-            return Program.Container.Resolve<FormProduct>();
+            var form = Program.Container.Resolve<FormProduct>();
+            if (element != null)
+                form.Id = element.Id;
+            return form;
         }
 
         public void ReloadData()
         {
-            treeView.Dispose();
-            treeView = new LipatovTreeView();
-            treeView.SetHierarchy(new List<string> { "Category", "Count", "Id", "Name" });
+            treeView.Clear();
+            //treeView.SetHierarchy(new List<string> { "Category", "Count", "Id", "Name" });
             _productLogic.Read(null).ForEach(product => treeView.AddItem(new ProductConventionElement 
             { 
                 Id = (int)product.Id,
