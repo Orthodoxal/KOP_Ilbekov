@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace GroceryStore
 {
-    public partial class FormUnits : Form
+    public partial class FormCategory : Form
     {
         private ICategoryLogic _categoryLogic;
         List<CategoryViewModel> list;
-        public FormUnits(ICategoryLogic categoryLogic)
+        public FormCategory(ICategoryLogic categoryLogic)
         {
             InitializeComponent();
             _categoryLogic = categoryLogic;
@@ -28,9 +28,9 @@ namespace GroceryStore
                 list = _categoryLogic.Read(null);
                 if (list != null)
                 {
-                    dataGridViewUnits.DataSource = list;
-                    dataGridViewUnits.Columns[0].Visible = false;
-                    dataGridViewUnits.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewCategory.DataSource = list;
+                    dataGridViewCategory.Columns[0].Visible = false;
+                    dataGridViewCategory.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)
@@ -39,26 +39,26 @@ namespace GroceryStore
             }
         }
 
-        private void FormUnits_Load(object sender, EventArgs e)
+        private void FormCategory_Load(object sender, EventArgs e)
         {
             LoadData();
         }
 
-        private void dataGridViewUnits_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewCategory_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            var typeName = (string)dataGridViewUnits.CurrentRow.Cells[1].Value;
+            var typeName = (string)dataGridViewCategory.CurrentRow.Cells[1].Value;
             if (!string.IsNullOrEmpty(typeName))
             {
                 int? id;
-                if (dataGridViewUnits.CurrentRow.Cells[0].Value == null)
+                if (dataGridViewCategory.CurrentRow.Cells[0].Value == null)
                     id = null;
                 else
-                    id = Convert.ToInt32(dataGridViewUnits.CurrentRow.Cells[0].Value);
+                    id = Convert.ToInt32(dataGridViewCategory.CurrentRow.Cells[0].Value);
 
                 _categoryLogic.CreateOrUpdate(new CategoryViewModel
                 {
                     Id = id,
-                    Name = (string)dataGridViewUnits.CurrentRow.Cells[1].EditedFormattedValue
+                    Name = (string)dataGridViewCategory.CurrentRow.Cells[1].EditedFormattedValue
                 });
             }
             else
@@ -72,18 +72,18 @@ namespace GroceryStore
         {
             if (e.KeyData == Keys.Insert)
             {
-                if (dataGridViewUnits.Rows.Count == 0)
+                if (dataGridViewCategory.Rows.Count == 0)
                 {
                     list.Add(new CategoryViewModel());
-                    dataGridViewUnits.DataSource = new List<CategoryViewModel>(list);
-                    dataGridViewUnits.CurrentCell = dataGridViewUnits.Rows[0].Cells[1];
+                    dataGridViewCategory.DataSource = new List<CategoryViewModel>(list);
+                    dataGridViewCategory.CurrentCell = dataGridViewCategory.Rows[0].Cells[1];
                     return;
                 }
-                if (dataGridViewUnits.Rows[dataGridViewUnits.Rows.Count - 1].Cells[1].Value != null)
+                if (dataGridViewCategory.Rows[dataGridViewCategory.Rows.Count - 1].Cells[1].Value != null)
                 {
                     list.Add(new CategoryViewModel());
-                    dataGridViewUnits.DataSource = new List<CategoryViewModel>(list);
-                    dataGridViewUnits.CurrentCell = dataGridViewUnits.Rows[dataGridViewUnits.Rows.Count - 1].Cells[1];
+                    dataGridViewCategory.DataSource = new List<CategoryViewModel>(list);
+                    dataGridViewCategory.CurrentCell = dataGridViewCategory.Rows[dataGridViewCategory.Rows.Count - 1].Cells[1];
                     return;
                 }
             }
@@ -92,7 +92,7 @@ namespace GroceryStore
                 if (MessageBox.Show("Удалить выбранный элемент", "Удаление",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    _categoryLogic.Delete(new CategoryViewModel() { Id = (int)dataGridViewUnits.CurrentRow.Cells[0].Value });
+                    _categoryLogic.Delete(new CategoryViewModel() { Id = (int)dataGridViewCategory.CurrentRow.Cells[0].Value });
                     LoadData();
                 }
             }

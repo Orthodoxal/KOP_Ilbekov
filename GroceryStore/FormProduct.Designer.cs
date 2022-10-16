@@ -77,6 +77,8 @@
             // 
             // textBoxName
             // 
+            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxName.Location = new System.Drawing.Point(12, 33);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(355, 22);
@@ -84,6 +86,8 @@
             // 
             // textBoxDescription
             // 
+            this.textBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDescription.Location = new System.Drawing.Point(12, 99);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(355, 22);
@@ -91,6 +95,8 @@
             // 
             // ilbekovComboBoxCategory
             // 
+            this.ilbekovComboBoxCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ilbekovComboBoxCategory.ChoosenItem = "";
             this.ilbekovComboBoxCategory.Location = new System.Drawing.Point(12, 152);
             this.ilbekovComboBoxCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -100,6 +106,8 @@
             // 
             // madyshevTextBoxCount
             // 
+            this.madyshevTextBoxCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.madyshevTextBoxCount.Location = new System.Drawing.Point(12, 217);
             this.madyshevTextBoxCount.Name = "madyshevTextBoxCount";
             this.madyshevTextBoxCount.Size = new System.Drawing.Size(355, 47);

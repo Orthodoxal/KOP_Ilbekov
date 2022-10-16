@@ -92,12 +92,33 @@ namespace GroceryStore.Plugins
             return true;
         }
 
+        public class ProductViewModelDoc
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public string Category { get; set; }
+            public string Count { get; set; }
+        }
+
         public bool CreateTableDocument(PluginsConventionSaveDocument saveDocument)
         {
             try
             {
                 MadyshevCustomTableComponent tableWord = new MadyshevCustomTableComponent();
-                tableWord.CreateDoc(new CustomTableData<ProductViewModel>()
+                var listData = new List<ProductViewModelDoc>();
+                foreach (var product in _productLogic.Read(null))
+                {
+                    listData.Add(new ProductViewModelDoc
+                    {
+                        Id = product.Id == null ? -1 : product.Id.Value,
+                        Name = product.Name,
+                        Description = product.Description,
+                        Category = product.Category,
+                        Count = product.Count == null ? "Отсутствует" : product.Count.ToString(),
+                    });
+                }
+                tableWord.CreateDoc(new CustomTableData<ProductViewModelDoc>()
                 {
                     FileName = saveDocument.FileName,
                     Title = "Продукты",
@@ -109,13 +130,13 @@ namespace GroceryStore.Plugins
                                 },
                     ColumnsWidth = new List<int>()
                                 {
-                                1000, 1000, 1000, 800
+                                800, 1000, 1000, 1000, 1000
                                 },
                     ColumnsProperties = new List<string>()
                                 {
                                 "Id", "Name", "Description", "Category", "Count"
                                 },
-                    Data = _productLogic.Read(null)
+                    Data = listData
                 });
             }
             catch (Exception ex)

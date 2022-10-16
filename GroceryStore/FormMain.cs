@@ -57,7 +57,7 @@ namespace GroceryStore
 
         private void MenuItemCategories_Click(object sender, EventArgs e)
         {
-            var form = Program.Container.Resolve<FormUnits>();
+            var form = Program.Container.Resolve<FormCategory>();
             form.ShowDialog();
         }
 
